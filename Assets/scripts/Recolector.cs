@@ -6,12 +6,12 @@ public class Recolector : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("Toque: " + other.gameObject.name);
+
         if (other.CompareTag("Coleccionable"))
         {
             contador++;
-
-            Debug.Log("Objetos recolectados: " + contador);
-
+            Debug.Log("Recolectados: " + contador);
             Destroy(other.gameObject);
         }
     }
