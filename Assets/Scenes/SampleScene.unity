@@ -305,6 +305,7 @@ GameObject:
   - component: {fileID: 788983127}
   - component: {fileID: 788983126}
   - component: {fileID: 788983130}
+  - component: {fileID: 788983131}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -412,6 +413,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bf9fa7956627c34db23fc2682e59a87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreText: {fileID: 0}
+--- !u!114 &788983131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 788983124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bf9fa7956627c34db23fc2682e59a87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreText: {fileID: 0}
 --- !u!1 &800519276
 GameObject:
   m_ObjectHideFlags: 0
@@ -490,6 +505,7 @@ GameObject:
   - component: {fileID: 847126560}
   - component: {fileID: 847126559}
   - component: {fileID: 847126561}
+  - component: {fileID: 847126562}
   m_Layer: 5
   m_Name: timerText
   m_TagString: Untagged
@@ -635,6 +651,20 @@ CanvasRenderer:
   m_GameObject: {fileID: 847126557}
   m_CullTransparentMesh: 0
 --- !u!114 &847126561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 847126557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6d4162181f74ab4990bdfea1426342d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timerText: {fileID: 0}
+  timer: 60
+--- !u!114 &847126562
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -817,7 +847,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Name: 
-  m_EditorClassIdentifier: 
   scoreText: {fileID: 0}
   timerText: {fileID: 0}
 --- !u!1001 &1281132351
