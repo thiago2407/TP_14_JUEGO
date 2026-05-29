@@ -3,8 +3,13 @@ using TMPro;
 
 public class Temporizador : MonoBehaviour
 {
-    public TextMeshProUGUI timerText;
+    private TextMeshProUGUI timerText;
     public float timer = 60f;
+
+    private void Awake()
+    {
+        timerText = GetComponent<TextMeshProUGUI>();
+    }
 
     private void Start()
     {
