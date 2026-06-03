@@ -11,9 +11,13 @@ public class Recolector : MonoBehaviour
 
     private void Start()
     {
+        // Asegura que la partida empiece sin estar congelada.
         Time.timeScale = 1f;
 
-        // Busca el texto del score si no fue conectado desde el Inspector.
+        contador = 0;
+        juegoGanado = false;
+
+        // Busca el texto del score si no fue conectado manualmente.
         if (scoreText == null)
         {
             GameObject texto = GameObject.Find("scoreText");
@@ -22,12 +26,20 @@ public class Recolector : MonoBehaviour
             {
                 scoreText = texto.GetComponent<TextMeshProUGUI>();
             }
+            else
+            {
+                Debug.LogError("No se encontro el objeto scoreText.");
+            }
         }
 
-        // Al comenzar la partida, la pantalla de victoria queda oculta.
+        // Oculta la pantalla de victoria al iniciar.
         if (winPanel != null)
         {
             winPanel.SetActive(false);
+        }
+        else
+        {
+            Debug.LogError("No conectaste WinPanel en el componente Recolector del Cube.");
         }
 
         ActualizarTexto();
@@ -35,12 +47,13 @@ public class Recolector : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        // Si ya se gano, no sigue recolectando objetos.
         if (juegoGanado)
         {
             return;
         }
 
-        // Evita que el Cube se detecte a sí mismo o al FPSController.
+        // Evita que el Cube detecte al propio FPSController.
         if (other.transform.root == transform.root)
         {
             return;
@@ -48,20 +61,25 @@ public class Recolector : MonoBehaviour
 
         GameObject objetoRecolectable = BuscarColeccionable(other.transform);
 
-        if (objetoRecolectable != null)
+        // Si el objeto tocado no es coleccionable, no hace nada.
+        if (objetoRecolectable == null)
         {
-            contador++;
+            return;
+        }
 
-            Destroy(objetoRecolectable);
+        contador++;
 
-            ActualizarTexto();
+        Debug.Log("Objeto recolectado: " + objetoRecolectable.name);
+        Debug.Log("Score: " + contador);
 
-            Debug.Log("Score: " + contador);
+        Destroy(objetoRecolectable);
 
-            if (contador >= 6)
-            {
-                MostrarVictoria();
-            }
+        ActualizarTexto();
+
+        // Solamente al llegar a 6 puntos aparece el WinPanel.
+        if (contador >= 6)
+        {
+            MostrarVictoria();
         }
     }
 
@@ -92,7 +110,7 @@ public class Recolector : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Falta conectar WinPanel en el script Recolector del Cube.");
+            Debug.LogError("No se puede mostrar la victoria porque WinPanel no esta conectado.");
         }
 
         Time.timeScale = 0f;
