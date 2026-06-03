@@ -4,10 +4,16 @@ using TMPro;
 public class Recolector : MonoBehaviour
 {
     public TextMeshProUGUI scoreText;
+    public GameObject winPanel;
+
     private int contador = 0;
+    private bool juegoGanado = false;
 
     private void Start()
     {
+        Time.timeScale = 1f;
+
+        // Busca el texto del score si no fue conectado desde el Inspector.
         if (scoreText == null)
         {
             GameObject texto = GameObject.Find("scoreText");
@@ -18,18 +24,27 @@ public class Recolector : MonoBehaviour
             }
         }
 
+        // Al comenzar la partida, la pantalla de victoria queda oculta.
+        if (winPanel != null)
+        {
+            winPanel.SetActive(false);
+        }
+
         ActualizarTexto();
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        // Ignora al propio jugador
-        if (other.transform.root == transform.root)
+        if (juegoGanado)
         {
             return;
         }
 
-        Debug.Log("El Cube toco: " + other.gameObject.name);
+        // Evita que el Cube se detecte a sí mismo o al FPSController.
+        if (other.transform.root == transform.root)
+        {
+            return;
+        }
 
         GameObject objetoRecolectable = BuscarColeccionable(other.transform);
 
@@ -37,12 +52,16 @@ public class Recolector : MonoBehaviour
         {
             contador++;
 
-            Debug.Log("Objeto destruido: " + objetoRecolectable.name);
-            Debug.Log("Score: " + contador);
-
             Destroy(objetoRecolectable);
 
             ActualizarTexto();
+
+            Debug.Log("Score: " + contador);
+
+            if (contador >= 6)
+            {
+                MostrarVictoria();
+            }
         }
     }
 
@@ -61,6 +80,24 @@ public class Recolector : MonoBehaviour
         }
 
         return null;
+    }
+
+    private void MostrarVictoria()
+    {
+        juegoGanado = true;
+
+        if (winPanel != null)
+        {
+            winPanel.SetActive(true);
+        }
+        else
+        {
+            Debug.LogError("Falta conectar WinPanel en el script Recolector del Cube.");
+        }
+
+        Time.timeScale = 0f;
+
+        Debug.Log("¡GANASTE!");
     }
 
     private void ActualizarTexto()
