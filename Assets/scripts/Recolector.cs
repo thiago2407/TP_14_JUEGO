@@ -4,6 +4,7 @@ using TMPro;
 public class Recolector : MonoBehaviour
 {
     public TextMeshProUGUI scoreText;
+
     private int contador = 0;
 
     private void Start()
@@ -23,11 +24,18 @@ public class Recolector : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Coleccionable"))
+        Debug.Log("El Cube toco: " + other.gameObject.name);
+
+        bool esCartuchera =
+            other.CompareTag("Coleccionable") ||
+            other.gameObject.name == "cartuchera2texture" ||
+            other.gameObject.name.Contains("cartuchera2texture");
+
+        if (esCartuchera)
         {
             contador++;
 
-            Debug.Log("Recolectados: " + contador);
+            Debug.Log("Cartuchera destruida. Score: " + contador);
 
             Destroy(other.gameObject);
 
@@ -43,7 +51,7 @@ public class Recolector : MonoBehaviour
         }
         else
         {
-            Debug.LogError("No se encontro el objeto scoreText. Revisa el nombre o conectalo en el Inspector.");
+            Debug.LogWarning("No se encontro scoreText. Arrastralo al campo Score Text del Cube.");
         }
     }
 }
