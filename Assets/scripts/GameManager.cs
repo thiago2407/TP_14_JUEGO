@@ -23,11 +23,12 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
 
         tiempoActual = tiempoLimite;
+        score = 0;
+        juegoTerminado = false;
 
         winPanel.SetActive(false);
         gameOverPanel.SetActive(false);
 
-        score = 0;
         scoreText.text = "Score: " + score;
         timerText.text = "Tiempo: " + Mathf.CeilToInt(tiempoActual);
     }
