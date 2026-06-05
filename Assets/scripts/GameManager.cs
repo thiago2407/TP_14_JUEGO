@@ -1,12 +1,16 @@
 ﻿using UnityEngine;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject panelWin;
-    public GameObject panelGameOver;
+    public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI timerText;
 
-    public int puntos = 0;
-    public int puntosParaGanar = 6;
+    public GameObject winPanel;
+    public GameObject gameOverPanel;
+
+    public int score = 0;
+    public int scoreParaGanar = 6;
 
     public float tiempoLimite = 60f;
     private float tiempoActual;
@@ -17,46 +21,58 @@ public class GameManager : MonoBehaviour
     {
         tiempoActual = tiempoLimite;
 
-        panelWin.SetActive(false);
-        panelGameOver.SetActive(false);
+        scoreText.text = "Score: " + score;
+        timerText.text = "Tiempo: " + Mathf.CeilToInt(tiempoActual);
+
+        winPanel.SetActive(false);
+        gameOverPanel.SetActive(false);
+
+        Time.timeScale = 1f;
     }
 
     void Update()
     {
-        if (juegoTerminado == false)
+        if (juegoTerminado == true)
         {
-            tiempoActual -= Time.deltaTime;
+            return;
+        }
 
-            if (puntos >= puntosParaGanar)
-            {
-                Ganar();
-            }
+        tiempoActual -= Time.deltaTime;
+        timerText.text = "Tiempo: " + Mathf.CeilToInt(tiempoActual);
 
-            if (tiempoActual <= 0 && puntos < puntosParaGanar)
-            {
-                Perder();
-            }
+        if (score >= scoreParaGanar)
+        {
+            Ganar();
+        }
+
+        if (tiempoActual <= 0 && score < scoreParaGanar)
+        {
+            Perder();
         }
     }
 
     public void SumarPunto()
     {
-        if (juegoTerminado == false)
+        if (juegoTerminado == true)
         {
-            puntos++;
+            return;
+        }
 
-            if (puntos >= puntosParaGanar)
-            {
-                Ganar();
-            }
+        score++;
+        scoreText.text = "Score: " + score;
+
+        if (score >= scoreParaGanar)
+        {
+            Ganar();
         }
     }
 
     void Ganar()
     {
         juegoTerminado = true;
-        panelWin.SetActive(true);
-        panelGameOver.SetActive(false);
+
+        winPanel.SetActive(true);
+        gameOverPanel.SetActive(false);
 
         Time.timeScale = 0f;
     }
@@ -64,8 +80,9 @@ public class GameManager : MonoBehaviour
     void Perder()
     {
         juegoTerminado = true;
-        panelGameOver.SetActive(true);
-        panelWin.SetActive(false);
+
+        gameOverPanel.SetActive(true);
+        winPanel.SetActive(false);
 
         Time.timeScale = 0f;
     }
