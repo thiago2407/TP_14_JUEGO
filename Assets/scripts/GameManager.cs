@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -19,31 +20,32 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        tiempoActual = tiempoLimite;
+        Time.timeScale = 1f;
 
-        scoreText.text = "Score: " + score;
-        timerText.text = "Tiempo: " + Mathf.CeilToInt(tiempoActual);
+        tiempoActual = tiempoLimite;
 
         winPanel.SetActive(false);
         gameOverPanel.SetActive(false);
 
-        Time.timeScale = 1f;
+        score = 0;
+        scoreText.text = "Score: " + score;
+        timerText.text = "Tiempo: " + Mathf.CeilToInt(tiempoActual);
     }
 
     void Update()
     {
-        if (juegoTerminado == true)
+        if (juegoTerminado)
         {
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                ReiniciarEscena();
+            }
+
             return;
         }
 
         tiempoActual -= Time.deltaTime;
         timerText.text = "Tiempo: " + Mathf.CeilToInt(tiempoActual);
-
-        if (score >= scoreParaGanar)
-        {
-            Ganar();
-        }
 
         if (tiempoActual <= 0 && score < scoreParaGanar)
         {
@@ -53,7 +55,7 @@ public class GameManager : MonoBehaviour
 
     public void SumarPunto()
     {
-        if (juegoTerminado == true)
+        if (juegoTerminado)
         {
             return;
         }
@@ -85,5 +87,11 @@ public class GameManager : MonoBehaviour
         winPanel.SetActive(false);
 
         Time.timeScale = 0f;
+    }
+
+    void ReiniciarEscena()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
