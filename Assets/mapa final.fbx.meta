@@ -141,6 +141,31 @@ ModelImporter:
     4300044: 'ventanas monta '
     4300046: ventanas taller
     4300048: ventanas taller frontal
+    6400000: comedor
+    6400002: Cube
+    6400004: DAT
+    6400006: edificio libertador
+    6400008: "edificio monta\xF1eses"
+    6400010: escalera comedor
+    6400012: "escalera monta\xF1eses"
+    6400014: labs
+    6400016: pared
+    6400018: pared.001
+    6400020: Plane
+    6400022: plantas
+    6400024: puerta
+    6400026: puerta.001
+    6400028: puerta.002
+    6400030: puerta.003
+    6400032: puerta.004
+    6400034: puerta.005
+    6400036: puerta.006
+    6400038: suelo
+    6400040: ventanas libertador
+    6400042: ventanas monta
+    6400044: 'ventanas monta '
+    6400046: ventanas taller
+    6400048: ventanas taller frontal
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -174,14 +199,14 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     useSRGBMaterialColor: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
     importLights: 1
     swapUVChannels: 0
-    generateSecondaryUV: 0
+    generateSecondaryUV: 1
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0
