@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Coleccionable
+  - mapa
   layers:
   - Default
   - TransparentFX
