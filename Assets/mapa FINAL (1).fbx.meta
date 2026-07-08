@@ -184,12 +184,82 @@ ModelImporter:
     6400050: puerta.008
     6400052: suelo
     10800000: Light
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TECHO
+    second: {fileID: 2100000, guid: 9fc1cd59cd5217d468014273e931f4eb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blanco dat
+    second: {fileID: 2100000, guid: 8dedfa05535b0af4096c541aef9ecd24, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: maceta
+    second: {fileID: 2100000, guid: de84c0bc6eb990d46be5ee2ebc44e2d6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: metal
+    second: {fileID: 2100000, guid: dd539e8ecb2f96b4e865ea08479820ed, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: negro
+    second: {fileID: 2100000, guid: 1a215637931bc0743beb28b9bbd4be4f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pasto
+    second: {fileID: 2100000, guid: 5d553b8092534b042a02a7adc592e7bd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: piso texture
+    second: {fileID: 2100000, guid: f8f47bd8d08e7c841a7e86e71cc6b9af, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: puerta negro
+    second: {fileID: 2100000, guid: 5fff927e7a0cf964f8ad26f587f8e59d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: textura edificios
+    second: {fileID: 2100000, guid: d84949fa1c749fb4fbda9babf225959a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: texturas paredes
+    second: {fileID: 2100000, guid: 84d90257f9446134b9d61af390336578, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: vidrio
+    second: {fileID: 2100000, guid: 5163605e3d138494a80abd8d13574228, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Stone_TilesGranite_512_albedo
+    second: {fileID: 2800000, guid: 1011329778027bd468e153028460b3ae, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: plastered_wall_05_diff_1k
+    second: {fileID: 2800000, guid: 91fa22aafea76d84587dadb8e642a586, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: red_brick_diff_1k
+    second: {fileID: 2800000, guid: 98a868c30adfdb74ab0750f5869f27de, type: 3}
   materials:
     importMaterials: 1
     materialName: 0
-    materialSearch: 1
-    materialLocation: 1
+    materialSearch: 0
+    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
